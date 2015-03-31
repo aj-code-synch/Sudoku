@@ -19,6 +19,7 @@ public class Grid {
 				numOK = false;
 				newNum = false;
 				checked = null;
+				checked = new ArrayList<Integer>();
 
 
 				do {
@@ -55,6 +56,7 @@ public class Grid {
 		}
 	}
 
+
 	protected boolean checkGrid(int x, int y, int value){
 
 		boolean numberOK = true;
@@ -80,17 +82,242 @@ public class Grid {
 
 
 		//		Check Small Grid
+
 		if((x+1)%3 == 1){
+
 			if((y+1)%3 == 1){
+				//              No Need				
+				//				-------------
+				//				| X |   |   |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
 
 			}
-		}
 
 
+			if((y+1)%3 == 2){			
+				//				-------------
+				//				|   | A | B |
+				//				-------------
+				//				| X |   |   |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+
+				// A				
+				if(grid[x+1][y-1]==value){
+					numberOK = false;
+					return numberOK;					
+				}
+				// B
+				if(grid[x+2][y-1]==value){
+					numberOK = false;
+					return numberOK;					
+				}
+
+			}
+			if((y+1)%3 == 0){			
+				//					-------------
+				//					|   | A | B |
+				//					-------------
+				//					|   | C | D |
+				//					-------------
+				//					| X |   |   |
+				//					-------------
+
+				// A
+				if(grid[x+1][y-2]==value){
+					numberOK = false;
+					return numberOK;					
+				}
+				// B
+				if(grid[x+2][y-2]==value){
+					numberOK = false;
+					return numberOK;					
+				}
+
+				// C
+				if(grid[x+1][y-1]==value){
+					numberOK = false;
+					return numberOK;					
+				}
+				// D
+				if(grid[x+2][y-1]==value){
+					numberOK = false;
+					return numberOK;					
+				}
+
+
+			}
+
+
+		} //(x+1)%3 == 1
+
+
+		if((x+1)%3 == 2){
+
+			if((y+1)%3 == 1){
+				//              No Need				
+				//				-------------
+				//				|   | X |   |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+
+			}
+
+			if((y+1)%3 == 2){
+
+				//				-------------
+				//				| A |   | B |
+				//				-------------
+				//				|   | X |   |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+
+				if(grid[x-1][y-1]==value){
+					numberOK = false;
+					return numberOK;	
+				}
+
+				if(grid[x+1][y-1]==value){
+					numberOK = false;
+					return numberOK;	
+				}
+
+			}
+
+			if((y+1)%3 == 0){
+
+				//				-------------
+				//				| A |   | B |
+				//				-------------
+				//				| C |   | D |
+				//				-------------
+				//				|   | X |   |
+				//				-------------
+
+				// A					
+				if(grid[x-1][y-2]==value){
+					numberOK = false;
+					return numberOK;	
+				}
+
+				// B
+				if(grid[x+1][y-2]==value){
+					numberOK = false;
+					return numberOK;	
+				}	
+
+				// C
+				if(grid[x-1][y-1]==value){
+					numberOK = false;
+					return numberOK;	
+				}
+
+				// D
+				if(grid[x+1][y-1]==value){
+					numberOK = false;
+					return numberOK;	
+				}		
+
+			}			
+
+
+
+		} //(x+1)%3 == 2
+
+		if((x+1)%3 == 0){
+
+			if((y+1)%3 == 1){
+				//              No Need				
+				//				-------------
+				//				|   |   | X |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+			}
+
+			if((y+1)%3 == 1){
+
+				//				-------------
+				//				| A | B |   |
+				//				-------------
+				//				|   |   | X |
+				//				-------------
+				//				|   |   |   |
+				//				-------------
+
+				// A					
+				if(grid[x-2][y-1]==value){
+					numberOK = false;
+					return numberOK;	
+				}
+
+				// A					
+				if(grid[x-1][y-1]==value){
+					numberOK = false;
+					return numberOK;	
+				}				
+
+				if((y+1)%3 == 0){
+
+					//				-------------
+					//				| A | B |   |
+					//				-------------
+					//				| C | D |   |
+					//				-------------
+					//				|   |   | X |
+					//				-------------
+
+					// A					
+					if(grid[x-2][y-2]==value){
+						numberOK = false;
+						return numberOK;	
+					}
+
+					// B					
+					if(grid[x-1][y-2]==value){
+						numberOK = false;
+						return numberOK;	
+					}	
+
+					// C					
+					if(grid[x-2][y-1]==value){
+						numberOK = false;
+						return numberOK;	
+					}
+
+					// D					
+					if(grid[x-1][y-1]==value){
+						numberOK = false;
+						return numberOK;	
+					}
+
+				}
+
+			} //(x+1)%3 == 0
+
+
+
+
+		} //(x+1)%3 == 0
 
 		return numberOK;
-
 	}
 
+	public int getValue(int x, int y){
+		
+		return grid[x][y];
+		
+	}
 
 }
