@@ -57,10 +57,12 @@ public class Grid {
 	}
 
 
-	protected boolean checkGrid(int x, int y, int value){
+	protected boolean checkGrid(int yy, int xx, int value){
 
 		boolean numberOK = true;
 
+		int y = xx;
+		int x = yy;
 
 
 		// Check Current Row
