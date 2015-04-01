@@ -57,17 +57,18 @@ public class Grid {
 	}
 
 
-	protected boolean checkGrid(int yy, int xx, int value){
+	protected boolean checkGrid(int x, int y, int value){
 
 		boolean numberOK = true;
 
-		int y = xx;
-		int x = yy;
 
 
+		//X GOES VERTICAL
+		//Y GOES HORIZONTAL
+		
 		// Check Current Row
-		for (int i = 0; i < x-1; i++) {
-			if (grid[i][y]==value) {
+		for (int i = 0; i < y-1; i++) {
+			if (grid[x][i]==value) {
 				numberOK = false;
 				return numberOK;
 			}
@@ -76,7 +77,7 @@ public class Grid {
 
 		// Check Current Column
 		for (int i = 0; i < x-1; i++) {
-			if (grid[x][i]==value) {
+			if (grid[i][y]==value) {
 				numberOK = false;
 				return numberOK;
 			}
@@ -85,93 +86,14 @@ public class Grid {
 
 		//		Check Small Grid
 
-		if((x+1)%3 == 1){
-
-			if((y+1)%3 == 1){
-				//              No Need				
-				//				-------------
-				//				| X |   |   |
-				//				-------------
-				//				|   |   |   |
-				//				-------------
-				//				|   |   |   |
-				//				-------------
-
-			}
-
-
-			if((y+1)%3 == 2){			
-				//				-------------
-				//				|   | A | B |
-				//				-------------
-				//				| X |   |   |
-				//				-------------
-				//				|   |   |   |
-				//				-------------
-
-				// A				
-				if(grid[x+1][y-1]==value){
-					numberOK = false;
-					return numberOK;					
-				}
-				// B
-				if(grid[x+2][y-1]==value){
-					numberOK = false;
-					return numberOK;					
-				}
-
-			}
-			if((y+1)%3 == 0){			
-				//					-------------
-				//					|   | A | B |
-				//					-------------
-				//					|   | C | D |
-				//					-------------
-				//					| X |   |   |
-				//					-------------
-
-				// A
-				if(grid[x+1][y-2]==value){
-					numberOK = false;
-					return numberOK;					
-				}
-				// B
-				if(grid[x+2][y-2]==value){
-					numberOK = false;
-					return numberOK;					
-				}
-
-				// C
-				if(grid[x+1][y-1]==value){
-					numberOK = false;
-					return numberOK;					
-				}
-				// D
-				if(grid[x+2][y-1]==value){
-					numberOK = false;
-					return numberOK;					
-				}
-
-
-			}
-
-
-		} //(x+1)%3 == 1
+		if((x+1)%3 == 1){ 
+//			No Need. Same Row. 
+			} //(x+1)%3 == 1
 
 
 		if((x+1)%3 == 2){
 
-			if((y+1)%3 == 1){
-				//              No Need				
-				//				-------------
-				//				|   | X |   |
-				//				-------------
-				//				|   |   |   |
-				//				-------------
-				//				|   |   |   |
-				//				-------------
 
-			}
 
 			if((y+1)%3 == 2){
 
