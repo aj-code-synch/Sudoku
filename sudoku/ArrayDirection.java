@@ -1,5 +1,7 @@
 package sudoku;
 
+import java.util.Arrays;
+
 public class ArrayDirection {
 
 	public static void main(String[] args) {
@@ -20,6 +22,8 @@ public class ArrayDirection {
 			}
 			System.out.println("");
 		}
+		
+		System.out.println(Arrays.deepToString(testArray));
 
 	}
 
