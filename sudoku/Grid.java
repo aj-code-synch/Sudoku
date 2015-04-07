@@ -31,8 +31,8 @@ public class Grid {
 						if (checked.contains(next)==false) {
 							newNum = true;
 						}else {
-							System.out.println(checked);
-							System.out.println(next);
+//							System.out.println(checked);
+//							System.out.println(next);
 						}
 						
 					} while (newNum == false);
@@ -47,11 +47,11 @@ public class Grid {
 
 					if(checked.size() == 9){
 						//All have been checked. Restart everything :(
-						System.out.println("All have been checked");
-						
-						printGrid();
-						System.out.println(checked);
-						System.out.println(next);
+//						System.out.println("All have been checked");
+//						
+//						printGrid();
+//						System.out.println(checked);
+//						System.out.println(next);
 						i = 0;
 						j = 0;
 						grid = null;
@@ -70,12 +70,17 @@ public class Grid {
 		}
 	}
 
+	public Grid(String str){
+		
+		
+		
+	}
 
 	protected boolean checkGrid(int x, int y, int value){
 
 		boolean numberOK = true;
 
-		System.out.println("Check " + x +"  " +y + "  " + value);
+//		System.out.println("Check " + x +"  " +y + "  " + value);
 
 
 		//X GOES VERTICAL
@@ -327,6 +332,7 @@ public class Grid {
 				if(exit == true){break;}
 				
 			}
+			System.out.println("------------");
 
 		} catch (NullPointerException e) {
 			// TODO: handle exception

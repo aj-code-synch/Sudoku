@@ -2,6 +2,7 @@ package sudoku;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -25,7 +26,9 @@ public class Cell extends JFormattedTextField{
 			BorderFactory.createMatteBorder(0, 0, 2, 2, Color.BLUE));
 
 	private static Border allBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK); 
-
+	
+	private Font fontforall = new Font(Font.SERIF, Font.BOLD, 30);
+	
 	//		BorderFactory.createMatteBorder(0, 0, 5, 0, Color.BLUE);
 	//		
 	//			}
@@ -34,6 +37,10 @@ public class Cell extends JFormattedTextField{
 		y = yy;
 		cellValue = value;
 		this.setPreferredSize(new Dimension(50,50));
+		this.setFont(fontforall);
+		this.setForeground(Color.BLUE);
+		this.setHorizontalAlignment(CENTER);
+//		this.setAlignmentY(CENTER_ALIGNMENT);
 
 		if((x+1)%3==0 && (y+1)%3 != 0){
 			this.setBorder(x3);
@@ -51,6 +58,23 @@ public class Cell extends JFormattedTextField{
 			this.setBorder(allBorder);
 		}
 
+	}
+	
+	public void readOnly(){
+		this.setText(Integer.toString(cellValue));
+		this.setEditable(false);
+		this.setForeground(Color.BLACK);
+	}
+	
+	public void checkValue(){
+		String cellValuestr = Integer.toString(cellValue);
+		
+		Integer input = Integer.parseInt(this.getText());
+		if(cellValue  != input) {
+			this.setForeground(Color.RED);
+		} else {
+			this.setForeground(Color.BLUE);
+		}
 	}
 
 }
