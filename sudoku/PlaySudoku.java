@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -32,6 +33,8 @@ public class PlaySudoku {
 	private static PlaySudoku gamePlay;
 
 	private Grid griddata;
+	
+	private ArrayList<Integer> filledOK; 
 
 
 	public static void main(String[] args) {
@@ -84,10 +87,6 @@ public class PlaySudoku {
 		giveHint.addActionListener(giveHintAction);
 		buttonPanel.add(giveHint);
 		
-		
-
-
-
 		mainPanel.add(buttonPanel);
 
 		prepUI();
@@ -118,11 +117,13 @@ public class PlaySudoku {
 		int randIndex;
 		Random rand = new Random();
 		int x,y;
+		filledOK = new ArrayList<Integer>();
 		for (int i = 0; i < 10; i++) {
 			randIndex = rand.nextInt(81);
 			x = randIndex / 9;
 			y = randIndex % 9;
-			gridUI[x][y].readOnly();
+			gridUI[x][y].readOnly(false);
+			filledOK.add(randIndex);
 
 		}
 
@@ -159,7 +160,20 @@ public class PlaySudoku {
 	
 	public class GiveHint implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			Random rand = new Random();
+			int hintIndex,x,y;
+			Boolean newhintHindex = true;
 			
+			do {
+				hintIndex = rand.nextInt(81);
+				newhintHindex = filledOK.contains(hintIndex);
+			} while (newhintHindex==true);
+			
+			x = hintIndex / 9;
+			y = hintIndex % 9;
+			gridUI[x][y].readOnly(true);
+			filledOK.add(hintIndex);
+			gridPanel.revalidate();
 		}
 	}
 	
